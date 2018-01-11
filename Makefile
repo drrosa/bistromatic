@@ -3,20 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: drosa-ta <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/01/23 12:18:38 by drosa-ta          #+#    #+#              #
-#    Updated: 2017/01/29 17:05:19 by drosa-ta         ###   ########.fr        #
+#    Created: 2018/01/10 00:20:07 by drosa-ta          #+#    #+#              #
+#    Updated: 2018/01/10 15:19:35 by drosa-ta         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = calc
-SRCS = main.c ft_atoi.c ft_itoa.c ft_putchar.c ft_putnbr.c
+SRCS = main.c ft_ptr_atoi.c bignum.c
 
 all: $(NAME)
 
 $(NAME):
-	@gcc -o $(NAME) -Wall -Werror -Wextra $(SRCS) 
+	@gcc -o $(NAME) -Wall -Werror -Wextra  -I . -L. -lft $(SRCS) 
+
+debug:
+	@gcc -g -o $(NAME) -Wall -Werror -Wextra  -I . -L. -lft $(SRCS) 
 
 clean:
 	@/bin/rm -f

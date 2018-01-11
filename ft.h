@@ -12,10 +12,10 @@
 
 #ifndef FT_H
 # define FT_H
-
-void	ft_putchar(char c);
-void	ft_putnbr(int nb);
-int		ft_atoi(char **str);
-char	*ft_itoa(int n);
+# define BUFF_SIZE 10
+int		ft_ptr_atoi(char **str);
+char	*add_sub(char **str);
+char	*mult_div_mod(char **str);
+char	*add_bignum(char *num1, int len1, char *num2, int len2);
 
 #endif

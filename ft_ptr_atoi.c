@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int	ft_atoi(char **str)
+int	ft_ptr_atoi(char **str)
 {
 	int	result;
 	int	sign;
