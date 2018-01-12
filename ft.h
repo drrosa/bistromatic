@@ -17,5 +17,7 @@ int		ft_ptr_atoi(char **str);
 char	*add_sub(char **str);
 char	*mult_div_mod(char **str);
 char	*add_bignum(char *num1, int len1, char *num2, int len2);
+char *subtract_bignum(char *num1, int len1, char *num2, int len2);
+short	is_valid_expression(char *str, int expr_size, char *base_operands);
 
 #endif

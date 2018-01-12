@@ -29,7 +29,7 @@ char	*do_op(char *num_a, char *num_b, char op)
 		return(add_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 		// result = a + b;
 	else if (op == '-')
-		result = (a - b);
+		return(subtract_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 	else if (op == '*')
 		result = (a * b);
 	else if (op == '/' && b != 0)
@@ -156,18 +156,30 @@ int	main(int argc, char **argv)
 	int		base_size;
 	t_array	buff;
 
+ 	// printf("IS_VALID: %hd\n", is_valid_expression("6*12", 4, "0123456789"));
+ 	// printf("%s\n", add_sub(&(result)));
+ 	//printf("IS_VALID: %hd\n", is_valid_expression("6*12", 4, "0123456789"));
 	if (argc != 3)
 		return (1);
 	base_size = ft_strlen(argv[1]);
 	// TODO: validate input
 	input_size = ft_atoi(argv[2]);
+	
 	if (!set_buffer(&buff))
+	{
 		return (1);
-	result = add_sub(&(buff.str));
+	}
+	buff.str[input_size] = '\0';
+	// printf("%s, %d, %s\n", buff.str, input_size, argv[1]);	
+	// printf("\nVALID?: %hd\n", is_valid_expression(buff.str, input_size, argv[1]));
+	if (is_valid_expression(buff.str, input_size, argv[1]))
+		result = add_sub(&(buff.str));
+	else
+		ft_putstr("syntax error");
 	// TODO: display in correct base
 	ft_putstr(result);
 	return (0);
 }
 
 // TODO
-// Error check parens, size, valid op after a num
+// Error check parens, size, valid op before '(', valid chars
