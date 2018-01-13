@@ -6,7 +6,7 @@
 /*   By: scamargo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:33:18 by scamargo          #+#    #+#             */
-/*   Updated: 2018/01/13 14:01:56 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/13 14:52:10 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,37 +82,46 @@ static int	carry_the_one(char *num, int initial_index, int factor)
 	return (0);
 }
 
+static void	subtract_factors(char *n1, char *n2, int lens[2], t_array *char_arr)
+{
+	int is_second_bigger;
+	int fac1;
+	int fac2;
+
+	is_second_bigger = second_is_bigger(&n2, &lens[1], &n1, &lens[0]);
+	lens[0]--;
+	lens[1]--;
+	while (lens[0] >= 0 || lens[1] >= 0)
+	{
+		fac1 = (lens[0] < 0) ? 0 : n1[lens[0]] - '0';
+		fac2 = (lens[1] < 0) ? 0 : n2[lens[1]] - '0';
+		fac1 = (fac1 < fac2) ? carry_the_one(n1, lens[0], fac1) : fac1;
+		fac1 -= fac2;
+		arr_insert(char_arr, fac1 + '0');
+		lens[0]--;
+		lens[1]--;
+	}
+	if (is_second_bigger)
+		arr_insert(char_arr, '-');
+}
+
 char		*subtract_bignum(char *num1, int len1, char *num2, int len2)
 {
 	char	*result;
 	t_array *char_arr;
-	int		is_second_bigger;
-	int		fac1;
-	int		fac2;
+	int		lens[2];
 
 	if (num1[0] == '-' && num2[0] == '-')
 		return (subtract_bignum(++num1, --len1, ++num2, --len2));
-	else if (num1[0] == '-' && num2[0] != '-') // TODO: protect call to convert_to_neg
+	else if (num1[0] == '-' && num2[0] != '-')
 		return (add_bignum(num1, len1, convert_to_neg(num2, len2), len2 + 1));
 	else if (num2[0] == '-' && num1[0] != '-')
 		return (add_bignum(++num2, --len2, num1, len1));
 	if (!(char_arr = init_bignum("", len1)))
 		return (0);
-	is_second_bigger = second_is_bigger(&num2, &len2, &num1, &len1);
-	len1--;
-	len2--;
-	while (len1 >= 0 || len2 >= 0)
-	{
-		fac1 = (len1 < 0) ? 0 : num1[len1] - '0';
-		fac2 = (len2 < 0) ? 0 : num2[len2] - '0';
-		fac1 = (fac1 < fac2) ? carry_the_one(num1, len1, fac1) : fac1;
-		fac1 -= fac2;
-		arr_insert(char_arr, fac1 + '0');
-		len1--;
-		len2--;
-	}
-	if (is_second_bigger)
-		arr_insert(char_arr, '-');
+	lens[0] = len1;
+	lens[1] = len2;
+	subtract_factors(num1, num2, lens, char_arr);
 	arr_insert(char_arr, '\0');
 	trim_trailing_zeroes(char_arr->str);
 	ft_strrev(char_arr->str);
