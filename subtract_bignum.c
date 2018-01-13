@@ -6,23 +6,39 @@
 /*   By: scamargo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:33:18 by scamargo          #+#    #+#             */
-/*   Updated: 2018/01/13 12:48:14 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/13 14:01:56 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft.h"
 
-static int	second_is_bigger(char *num1, int len1, char *num2, int len2)
+static int	second_is_bigger(char **p_n2, int *p_len2, char **p_n1, int *p_len1)
 {
-	if (len1 != len2)
-		return (len1 > len2);
-	while (--len1 >= 0)
+	int		is_sec_bigger;
+	int		temp_len;
+	char	*temp_str;
+
+	is_sec_bigger = (*p_len2 != *p_len1) ? (*p_len2 > *p_len1) : 0;
+	if (*p_len2 == *p_len1)
 	{
-		if (num1[len1] != num2[len1])
-			return (num1[len1] > num2[len1]);
+		temp_len = *p_len2;
+		while (--temp_len >= 0)
+		{
+			if ((*p_n2)[temp_len] != (*p_n1)[temp_len])
+				is_sec_bigger = ((*p_n2)[temp_len] > (*p_n1)[temp_len]);
+		}
 	}
-	return (0);
+	if (is_sec_bigger)
+	{
+		temp_str = *p_n1;
+		*p_n1 = *p_n2;
+		*p_n2 = temp_str;
+		temp_len = *p_len1;
+		*p_len1 = *p_len2;
+		*p_len2 = temp_len;
+	}
+	return (is_sec_bigger);
 }
 
 static void	trim_trailing_zeroes(char *num)
@@ -70,7 +86,6 @@ char		*subtract_bignum(char *num1, int len1, char *num2, int len2)
 {
 	char	*result;
 	t_array *char_arr;
-	char	*temp;
 	int		is_second_bigger;
 	int		fac1;
 	int		fac2;
@@ -83,15 +98,7 @@ char		*subtract_bignum(char *num1, int len1, char *num2, int len2)
 		return (add_bignum(++num2, --len2, num1, len1));
 	if (!(char_arr = init_bignum("", len1)))
 		return (0);
-	if ((is_second_bigger = second_is_bigger(num2, len2, num1, len1)))
-	{
-		temp = num1;
-		num1 = num2;
-		num2 = temp;
-		fac1 = len1;
-		len1 = len2;
-		len2 = fac1;
-	}
+	is_second_bigger = second_is_bigger(&num2, &len2, &num1, &len1);
 	len1--;
 	len2--;
 	while (len1 >= 0 || len2 >= 0)
