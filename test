@@ -1,0 +1,111 @@
+echo
+echo "ADDITION"
+echo
+
+echo "7 + 7:"
+echo "EXPECTED: 14"
+echo "RECEIVED: "
+echo "7+7" | ./calc 0123456789 3; echo; echo
+
+echo "-7 + 7"
+echo "EXPECTED: 0"
+echo "RECEIVED: "
+echo "-7+7" | ./calc 0123456789 4; echo; echo;
+
+echo "7 + -7"
+echo "EXPECTED: 0"
+echo "RECEIVED: "
+echo "7+-7" | ./calc 0123456789 4; echo; echo;
+
+echo "-5 + -5:"
+echo "EXPECTED: -10"
+echo "RECEIVED: "
+echo "-5+-5" | ./calc 0123456789 5; echo; echo;
+
+echo "543 + 432"
+echo "EXPECTED: 975"
+echo "RECEIVED: "
+echo "543+432" | ./calc 0123456789 7; echo; echo;
+
+echo "532 + 662"
+echo "EXPECTED: 1194"
+echo "RECEIVED: "
+echo "532+662" | ./calc 0123456789 7; echo; echo;
+
+echo "SUBTRACTION"
+echo
+
+echo "-5 - -5"
+echo "EXPECTED: 0"
+echo "RECEIVED: "
+echo "-5--5" | ./calc 0123456789 5; echo; echo;
+
+echo "-5 - 5"
+echo "EXPECTED: -10"
+echo "RECEIVED: "
+echo "-5-5" | ./calc 0123456789 4; echo; echo;
+
+echo "5 - -5"
+echo "EXPECTED: 10"
+echo "RECEIVED: "
+echo "5--5" | ./calc 0123456789 4; echo; echo;
+
+echo "5 - 5:"
+echo "EXPECTED: 0"
+echo "RECEIVED: "
+echo "5-5" | ./calc 0123456789 3; echo; echo;
+
+echo "100 - 100"
+echo "EXPECTED: 0"
+echo "RECEIVED: "
+echo "100-100" | ./calc 0123456789 7; echo; echo;
+
+echo "9-3:"
+echo "EXPECTED: 6"
+echo "RECEIVED: "
+echo "9-3" | ./calc 0123456789 3; echo; echo;
+
+echo "45-43:"
+echo "EXPECTED: 2"
+echo "RECEIVED: "
+echo "45-43" | ./calc 0123456789 5; echo; echo;
+
+echo "1003-2:"
+echo "EXPECTED: 1001"
+echo "RECEIVED: "
+echo "1003-2" | ./calc 0123456789 6; echo; echo;
+
+echo "0-3:"
+echo "EXPECTED: -3"
+echo "RECEIVED: "
+echo "0-3" | ./calc 0123456789 3; echo; echo;
+
+echo "43-45"
+echo "EXPECTED: -2"
+echo "RECEIVED: "
+echo "43-45" | ./calc 0123456789 5; echo; echo;
+
+echo "2 - 1003:"
+echo "EXPECTED: -1001"
+echo "RECEIVED: "
+echo "2-1003" | ./calc 0123456789 6; echo; echo;
+
+echo "10 - 3:"
+echo "EXPECTED: 7"
+echo "RECEIVED: "
+echo "10-3" | ./calc 0123456789 4; echo; echo;
+
+echo "3 - 10"
+echo "EXPECTED: -7"
+echo "RECEIVED: "
+echo "3-10" | ./calc 0123456789 4; echo; echo;
+
+echo "1001 - 3:"
+echo "EXPECTED: 998"
+echo "RECEIVED: "
+echo "1001-3" | ./calc 0123456789 6; echo; echo;
+
+echo "1001 - 999"
+echo "EXPECTED: 2"
+echo "RECEIVED: "
+echo "1001-999" | ./calc 0123456789 8; echo; echo;
