@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 13:10:27 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 14:56:04 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int		g_BASE_SIZE;
 
 char	*do_op(char *num_a, char *num_b, char op)
 {
-	printf("a = %s, b = %s op = %c\n", num_a, num_b, op);
-	int result;
-	int a = ft_ptr_atoi(&num_a);
-	int b = ft_ptr_atoi(&num_b);
-	num_a = ft_itoa(a);
-	num_b = ft_itoa(b);
+	//printf("a = %s, b = %s op = %c\n", num_a, num_b, op);
+	//int result;
+	//int a = ft_ptr_atoi(&num_a);
+	//int b = ft_ptr_atoi(&num_b);
+	//num_a = ft_itoa(a);
+	//num_b = ft_itoa(b);
 	
-	result = 0;
+	//result = 0;
 	if (op == '+')
 		return (add_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 		// result = a + b;
@@ -35,12 +35,33 @@ char	*do_op(char *num_a, char *num_b, char op)
 		return (subtract_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 	else if (op == '*')
 		return (mult_bignum(num_a, num_b));
-		//result = (a * b);
-	else if (op == '/' && b != 0)
+	/*else if (op == '/' && b != 0)
 		result = (a / b);
 	else if (op == '%' && b != 0)
 		result = (a % b);
-	return (ft_itoa(result));
+	return (ft_itoa(result));*/
+	return (0);
+}
+
+char	*parse_base_num(char **p_str) //account for multiple positive negatives, etc.
+{
+	char	*num;
+	int		i;
+	
+	i = 0;
+	while ((*p_str)[i] && (*p_str)[i] != '-' && (*p_str)[i] != '+' && (*p_str)[i] != '*' && (*p_str)[i] != '/' && (*p_str)[i] != '%')
+		i++;
+	if (!(num = (char*)ft_memalloc(i + 1)))
+		return (0); // TODO: protect this from caller side
+	i = 0;
+	while ((*p_str)[i] && (*p_str)[i] != '-' && (*p_str)[i] != '+' && (*p_str)[i] != '*' && (*p_str)[i] != '/' && (*p_str)[i] != '%')
+	{
+		num[i] = (*p_str)[i];
+		i++;
+	}
+	num[i] = '\0';
+	*p_str = &(*p_str)[i];
+	return num;
 }
 
 char	*parse_num(char **str)
@@ -57,8 +78,8 @@ char	*parse_num(char **str)
 			*str += 1;
 		return (a);
 	}
-	//printf("parse num: %s\n", *str);
-	return (ft_itoa(ft_ptr_atoi(str)));
+	return (parse_base_num(str));
+	//return (ft_itoa(ft_ptr_atoi(str)));
 }
 
 char	*mult_div_mod(char **str)
@@ -156,7 +177,6 @@ char	*eval_expr(char *str)
 int	get_base_value(char c)
 {
 	int i;
-
 	i = 0;
 	while (g_base[i])
 	{

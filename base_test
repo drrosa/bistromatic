@@ -1,5 +1,7 @@
 echo
+echo "========"
 echo "ADDITION"
+echo "========"
 echo
 
 echo "7 + 7:"
