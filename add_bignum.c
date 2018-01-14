@@ -6,12 +6,13 @@
 /*   By: scamargo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:57:54 by scamargo          #+#    #+#             */
-/*   Updated: 2018/01/13 18:18:46 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 13:09:01 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft.h"
+#include <stdio.h>
 
 static void	add_factors(char *n1, char *n2, int lens[2], t_array *char_arr)
 {
@@ -24,11 +25,14 @@ static void	add_factors(char *n1, char *n2, int lens[2], t_array *char_arr)
 	lens[1]--;
 	while (lens[0] >= 0 || lens[1] >= 0 || carry > 0)
 	{
-		fac1 = (lens[0] < 0) ? 0 : n1[lens[0]] - '0';
-		fac2 = (lens[1] < 0) ? 0 : n2[lens[1]] - '0';
+		//fac1 = (lens[0] < 0) ? 0 : n1[lens[0]] - '0';
+		fac1 = (lens[0] < 0) ? 0 : get_base_value(n1[lens[0]]);
+		//fac2 = (lens[1] < 0) ? 0 : n2[lens[1]] - '0';
+		fac2 = (lens[1] < 0) ? 0 : get_base_value(n2[lens[1]]);
 		fac1 += fac2 + carry;
-		arr_insert(char_arr, (fac1 % 10) + '0');
-		carry = fac1 / 10;
+		//printf("fac1 %% g_BASE_SIZE: %d\n", fac1 % g_BASE_SIZE); //TODO: REMOVE
+		arr_insert(char_arr, g_base[fac1 % g_BASE_SIZE]);
+		carry = fac1 / g_BASE_SIZE;
 		lens[0]--;
 		lens[1]--;
 	}

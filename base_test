@@ -1,0 +1,18 @@
+echo
+echo "ADDITION"
+echo
+
+echo "7 + 7:"
+echo "EXPECTED: syntax error"
+echo "RECEIVED: "
+echo "7+7" | ./calc 012345 3; echo; echo
+
+echo "11 + 5 -> base 0-5"
+echo "EXPECTED: 20"
+echo "RECEIVED: "
+echo "11+5" | ./calc 012345 4; echo; echo
+
+echo "bb + f -> base a-f" 
+echo "EXPECTED: ca"
+echo "RECEIVED: "
+echo "bb+f" | ./calc abcdef 4; echo; echo

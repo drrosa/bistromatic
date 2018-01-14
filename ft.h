@@ -6,7 +6,7 @@
 /*   By: drosa-ta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 23:04:27 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/13 12:49:26 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 12:50:18 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ short	is_valid_expression(char *str, int expr_size, char *base_operands);
 t_array	*init_bignum(char *str, int size);
 char	*convert_to_neg(char *num, int len);
 char	*mult_bignum(char *x, char *y);
-
+int		get_base_value(char c);
+int		g_BASE_SIZE;
+char	*g_base;
 #endif

@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/08 14:27:00 by drosa-ta         ###   ########.fr       */
+/*   Updated: 2018/01/14 13:10:27 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 #include <stdio.h>
 #include "libft.h"
 
+char	*g_base;
+int		g_BASE_SIZE;
+
 char	*do_op(char *num_a, char *num_b, char op)
 {
-	// printf("a = %s, b = %s op = %c\n", num_a, num_b, op);
+	printf("a = %s, b = %s op = %c\n", num_a, num_b, op);
 	int result;
 	int a = ft_ptr_atoi(&num_a);
 	int b = ft_ptr_atoi(&num_b);
@@ -26,12 +29,13 @@ char	*do_op(char *num_a, char *num_b, char op)
 	
 	result = 0;
 	if (op == '+')
-		return(add_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
+		return (add_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 		// result = a + b;
 	else if (op == '-')
-		return(subtract_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
+		return (subtract_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 	else if (op == '*')
-		result = (a * b);
+		return (mult_bignum(num_a, num_b));
+		//result = (a * b);
 	else if (op == '/' && b != 0)
 		result = (a / b);
 	else if (op == '%' && b != 0)
@@ -53,6 +57,7 @@ char	*parse_num(char **str)
 			*str += 1;
 		return (a);
 	}
+	//printf("parse num: %s\n", *str);
 	return (ft_itoa(ft_ptr_atoi(str)));
 }
 
@@ -148,12 +153,26 @@ char	*eval_expr(char *str)
 // 	return (0);
 // }
 
+int	get_base_value(char c)
+{
+	int i;
+
+	i = 0;
+	while (g_base[i])
+	{
+		if (c ==  g_base[i])
+			return (i);
+		i++;
+	}
+	ft_putendl("Wtf?! Not a valid base symbol");
+	return (-1);
+}
 
 int	main(int argc, char **argv)
 {
 	char	*result;
 	int		input_size;
-	int		base_size;
+	//int		base_size;
 	t_array	buff;
 
  	// printf("IS_VALID: %hd\n", is_valid_expression("6*12", 4, "0123456789"));
@@ -161,7 +180,8 @@ int	main(int argc, char **argv)
  	//printf("IS_VALID: %hd\n", is_valid_expression("6*12", 4, "0123456789"));
 	if (argc != 3)
 		return (1);
-	base_size = ft_strlen(argv[1]);
+	g_BASE_SIZE = ft_strlen(argv[1]);
+	g_base = argv[1];
 	// TODO: validate input
 	input_size = ft_atoi(argv[2]);
 	

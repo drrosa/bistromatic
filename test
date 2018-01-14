@@ -109,3 +109,13 @@ echo "1001 - 999"
 echo "EXPECTED: 2"
 echo "RECEIVED: "
 echo "1001-999" | ./calc 0123456789 8; echo; echo;
+
+echo "=============="
+echo "MULTIPLICATION"
+echo "=============="
+echo;
+
+echo "123456789 * 123456789"
+echo "EXPECTED: 15241578750190521"
+echo "RECEIVED: "
+echo "123456789*123456789" | ./calc 0123456789 19; echo; echo
