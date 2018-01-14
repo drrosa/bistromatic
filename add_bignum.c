@@ -6,7 +6,7 @@
 /*   By: scamargo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:57:54 by scamargo          #+#    #+#             */
-/*   Updated: 2018/01/13 17:45:26 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/13 18:18:46 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ char		*add_bignum(char *num1, int len1, char *num2, int len2)
 	if (num1[0] == '-' | num2[0] == '-')
 	{
 		if (num1[0] == '-')
-			subtract_bignum(num2, len2, ++num1, --len1);
+			return (subtract_bignum(num2, len2, ++num1, --len1));
 		else
-			subtract_bignum(num1, len1, ++num2, --len2);
+			return (subtract_bignum(num1, len1, ++num2, --len2));
 	}
 	lens[0] = len1;
 	lens[1] = len2;
