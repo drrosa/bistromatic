@@ -18,3 +18,21 @@ echo "bb + f -> base a-f"
 echo "EXPECTED: ca"
 echo "RECEIVED: "
 echo "bb+f" | ./calc abcdef 4; echo; echo
+
+echo
+echo "==========="
+echo "SUBTRACTION"
+echo "==========="
+echo
+
+echo "5 - -5 -> base 0-9"
+echo "EXPECTED: 10"
+echo "RECEIVED: "
+echo "5--5" | ./calc 0123456789 4; echo; echo;
+
+echo "-5 - -5 -> base 0-9"
+echo "EXPECTED: 0"
+echo "RECEIVED: "
+echo "-5--5" | ./calc 0123456789 5; echo; echo;
+
+
