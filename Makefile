@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = calc
-SRCS = main.c ft_ptr_atoi.c bignum.c add_bignum.c subtract_bignum.c errors.c
+SRCS = main.c ft_ptr_atoi.c bignum.c add_bignum.c subtract_bignum.c mult_bignum.c errors.c
 
 all: $(NAME)
 
