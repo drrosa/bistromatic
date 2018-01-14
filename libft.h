@@ -6,7 +6,7 @@
 /*   By: scamargo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/01 12:56:43 by scamargo          #+#    #+#             */
-/*   Updated: 2018/01/10 14:24:25 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/13 17:49:13 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,5 @@ void			ft_destroy_chartable(char **tab);
 void			arr_insert(t_array *arr, char c);
 t_array			*arr_init(int initial_size);
 char			*ft_itoa_base(int nbr, int base);
-
 
 #endif
