@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 16:01:22 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/11 16:01:25 by drosa-ta         ###   ########.fr       */
+/*   Updated: 2018/01/14 23:51:36 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,6 @@ short is_correct(char *str, char *base_operands)
 	ops = "+-*/%";
 	while (str[i] != '\0')
 	{
-		
-		// if(!ft_strchr(base_operands, str[i]))
-		// ft_putstr(base_operands);
-		// ft_putchar(str[i]);
-		// ft_putchar(str[i-1]);
-
 		if (str[i] == '(' && !ft_strchr(ops, str[i-1]))
 			return (0);
 		else if (str[i] == '(' || str[i] == ')')
