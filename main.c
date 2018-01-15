@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 19:27:17 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 20:57:27 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,41 @@ char	*do_op(char *num_a, char *num_b, char op)
 	
 	//result = 0;
 	if (op == '+')
+	{
+		ft_putstr("add: ");
+		ft_putstr(num_a);
+		ft_putchar('+');
+		ft_putendl(num_b);
+		printf("add: %s + %s\n", num_a, num_b);
 		return (add_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 		// result = a + b;
+	}
 	else if (op == '-')
+	{
+		ft_putstr("subtract: ");
+		ft_putstr(num_a);
+		ft_putchar('-');
+		ft_putendl(num_b);
 		return (subtract_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
+	}
 	else if (op == '*')
+	{
+		ft_putstr("mult: ");
+		ft_putstr(num_a);
+		ft_putchar('*');
+		ft_putendl(num_b);
 		return (mult_bignum(num_a, num_b));
-	else if (op == '/')
-		return (div_bignum(num_a, num_b));
-	/*else if (op == '%' && b != 0)
-		result = (a % b);
-	return (ft_itoa(result));*/
+	}
+	else if (op == '/' && num_b[0] != g_base[0])
+	{
+		ft_putstr("div: ");
+		ft_putstr(num_a);
+		ft_putchar('/');
+		ft_putendl(num_b);
+		return (div_bignum(num_a, num_b, 0));
+	}
+	else if (op == '%' && num_b[0] != g_base[0])
+		return (div_bignum(num_a, num_b, 1));
 	return (0);
 }
 
@@ -73,7 +97,6 @@ char	*parse_base_num(char **p_str) //account for multiple positive negatives, et
 		num[k++] = (*p_str)[i++];
 	num[k] = '\0';
 	*p_str = &(*p_str)[i];
-	printf("num: %s\n", num);
 	return (num);
 }
 
@@ -190,7 +213,6 @@ int	get_base_value(char c)
 {
 	int i;
 	i = 0;
-	//printf("get_b_val of %c\n", c);
 	while (g_base[i])
 	{
 		if (c ==  g_base[i])

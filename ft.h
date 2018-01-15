@@ -6,7 +6,7 @@
 /*   By: drosa-ta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 23:04:27 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 19:33:03 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 20:53:49 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ char	*mult_bignum(char *x, char *y);
 int		get_base_value(char c);
 int		g_BASE_SIZE;
 char	*g_base;
-char 	*div_bignum(char *a, char *b);
+char 	*div_bignum(char *a, char *b, int is_mod);
 #endif

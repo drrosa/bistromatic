@@ -1,6 +1,6 @@
 #include "ft.h"
 
-char *div_bignum(char *a, char *b)
+char *div_bignum(char *a, char *b, int is_mod)
 {
    	unsigned long long quotient;
     char *remainder;
@@ -16,6 +16,8 @@ char *div_bignum(char *a, char *b)
     }
 //	quotient = subtract_bignum( quotient, ft_strlen(quotient), "1", 1 );
 	quotient -= 1;
+	if (is_mod)
+		return (remainder);
 	return (ft_itoa(quotient));
 }
 /*
