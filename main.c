@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 21:54:51 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 23:40:23 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*do_op(char *num_a, char *num_b, char op)
 	return (0);
 }
 
-char	*parse_base_num(char **p_str).
+char	*parse_base_num(char **p_str)
 {
 	char	*num;
 	int		i;
