@@ -2,19 +2,23 @@
 
 char *div_bignum(char *a, char *b)
 {
-    int quotient;
+   	unsigned long long quotient;
     char *remainder;
+
     quotient = 0;
 	while(a[0] != '-')
     {
 		remainder = a;
-		// a = subtract_bignum( a, ft_strlen(a), b, ft_strlen(b) );
-		a = ft_itoa (ft_atoi(a) - ft_atoi(b));
-        quotient += 1;
+		a = subtract_bignum( a, ft_strlen(a), b, ft_strlen(b) );
+//		a = ft_itoa (ft_atoi(a) - ft_atoi(b));
+//      quotient = add_bignum( quotient, ft_strlen(quotient), "1", 1);
+		quotient += 1;
     }
+//	quotient = subtract_bignum( quotient, ft_strlen(quotient), "1", 1 );
 	quotient -= 1;
 	return (ft_itoa(quotient));
 }
+/*
 #include <stdio.h>
 int main(void)
 {
@@ -22,3 +26,4 @@ int main(void)
     char *b = "3";
     printf("%s\n", div_bignum(a, b));
 }
+*/

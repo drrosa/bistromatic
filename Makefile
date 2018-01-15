@@ -6,12 +6,12 @@
 #    By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/10 00:20:07 by drosa-ta          #+#    #+#              #
-#    Updated: 2018/01/13 14:58:44 by scamargo         ###   ########.fr        #
+#    Updated: 2018/01/14 17:24:22 by scamargo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = calc
-SRCS = main.c ft_ptr_atoi.c bignum.c add_bignum.c subtract_bignum.c mult_bignum.c errors.c
+SRCS = main.c ft_ptr_atoi.c bignum.c add_bignum.c subtract_bignum.c mult_bignum.c div_bignum.c errors.c
 
 all: $(NAME)
 

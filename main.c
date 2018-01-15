@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 15:58:52 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 17:31:47 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	*do_op(char *num_a, char *num_b, char op)
 		return (subtract_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
 	else if (op == '*')
 		return (mult_bignum(num_a, num_b));
-	/*else if (op == '/' && b != 0)
-		result = (a / b);
-	else if (op == '%' && b != 0)
+	else if (op == '/')
+		return (div_bignum(num_a, num_b));
+	/*else if (op == '%' && b != 0)
 		result = (a % b);
 	return (ft_itoa(result));*/
 	return (0);
