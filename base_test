@@ -50,6 +50,11 @@ echo "EXPECTED: JJI"
 echo "RECEIVED: "
 echo "BAAB-D" | ./calc ABCDEFGHIJ 6; echo; echo;
 
+echo "========"
+echo "DIVISION"
+echo "========"
+echo
+
 echo "40 / 3 -> base 0-9"
 echo "EXPECTED: 13"
 echo "RECEIVED: "
@@ -58,19 +63,34 @@ echo "40/3" | ./calc 0123456789 4; echo; echo;
 echo "434 / 35 -> base 0-9"
 echo "EXPECTED: 12"
 echo "RECEIVED: "
-echo "434/35" | ./calc 0123456789 6; echo; echo;
+echo "434/35" | ./calc 0123456789 6; echo;echo;
 
-echo "12345678 / 23456 -> base 0-9"
-echo "EXPECTED: 526"
-echo "RECEIVED: "
-echo "12345678/23456" | ./calc 0123456789 14; echo; echo;
+#echo "12345678 / 23456 -> base 0-9"
+#echo "EXPECTED: 526"
+#echo "RECEIVED: "
+#echo "12345678/23456" | ./calc 0123456789 14; echo; echo;
 
-echo "321456987/98765 -> base 0-9"
-echo "EXPECTED: 3254"
-echo "RECEIVED: "
-echo "321456987/98765" | ./calc 0123456789 15; echo; echo;
+#echo "321456987/98765 -> base 0-9"
+#echo "EXPECTED: 3254"
+#echo "RECEIVED: "
+#echo "321456987/98765" | ./calc 0123456789 15; echo; echo;
 
-echo "321456987123654789/98 -> base 0-9"
-echo "EXPECTED: 3280173337996477"
+#echo "321456987123654789/98 -> base 0-9"
+#echo "EXPECTED: 3280173337996477"
+#echo "RECEIVED: "
+#echo "321456987123654789/98" | ./calc 0123456789 21; echo; echo;
+
+echo "=============="
+echo "MULTIPLICATION"
+echo "=============="
+echo
+
+echo "12 * -3"
+echo "EXPECTED: -9"
 echo "RECEIVED: "
-echo "321456987123654789/98" | ./calc 0123456789 21; echo; echo;
+echo "12*-3" | ./calc 0123456789 5; echo; echo;
+
+echo "-12 * -12"
+echo "EXPECTED: 144"
+echo "RECEIVED: "
+echo "-12*-12" | ./calc 0123456789 7; echo; echo;

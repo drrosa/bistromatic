@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 20:57:27 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 21:54:51 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,12 @@ int		g_BASE_SIZE;
 
 char	*do_op(char *num_a, char *num_b, char op)
 {
-	//printf("a = %s, b = %s op = %c\n", num_a, num_b, op);
-	//int result;
-	//int a = ft_ptr_atoi(&num_a);
-	//int b = ft_ptr_atoi(&num_b);
-	//num_a = ft_itoa(a);
-	//num_b = ft_itoa(b);
-	
-	//result = 0;
+	int a_neg;
+	int b_neg;
+	char	*result;
+
+	a_neg = 0;
+	b_neg = 0;
 	if (op == '+')
 	{
 		ft_putstr("add: ");
@@ -36,7 +34,6 @@ char	*do_op(char *num_a, char *num_b, char op)
 		ft_putendl(num_b);
 		printf("add: %s + %s\n", num_a, num_b);
 		return (add_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
-		// result = a + b;
 	}
 	else if (op == '-')
 	{
@@ -52,6 +49,21 @@ char	*do_op(char *num_a, char *num_b, char op)
 		ft_putstr(num_a);
 		ft_putchar('*');
 		ft_putendl(num_b);
+		if (num_a[0] == '-')
+		{
+			num_a++;
+			a_neg = 1;
+		}
+		if (num_b[0] == '-')
+		{
+			num_b++;
+			b_neg = 1;
+		}
+		if (b_neg | a_neg)
+		{
+			result = mult_bignum(num_a, num_b);
+			return (convert_to_neg(result, ft_strlen(result)));
+		}
 		return (mult_bignum(num_a, num_b));
 	}
 	else if (op == '/' && num_b[0] != g_base[0])
@@ -67,7 +79,7 @@ char	*do_op(char *num_a, char *num_b, char op)
 	return (0);
 }
 
-char	*parse_base_num(char **p_str) //account for multiple positive negatives, etc.
+char	*parse_base_num(char **p_str).
 {
 	char	*num;
 	int		i;
@@ -192,22 +204,6 @@ char	*eval_expr(char *str)
 {
 	return (add_sub(&str));
 }
-
-// void	test()
-// {
-// 	printf("%s\n", eval_expr("3+6"));
-// 	printf("%s\n", eval_expr("--++-6(12)"));
-// 	printf("%s\n", eval_expr("--++-6*12"));
-// 	printf("%s\n", eval_expr("-(12-(4*32))"));
-// 	printf("%s\n", eval_expr("-(12-(4*32)"));
-// 	printf("%s\n", eval_expr("-(12*(13+15/5*(6/(12+14%(30%5+(10*25)-46)+16)-20)/43)*20)*(-(12-98*42)*(16+63-50/3))"));
-// }
-
-// int		main(void)
-// {
-// 	test();
-// 	return (0);
-// }
 
 int	get_base_value(char c)
 {
