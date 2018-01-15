@@ -1,0 +1,91 @@
+echo
+echo "========"
+echo "ADDITION"
+echo "========"
+echo
+
+echo "7 + 7:"
+echo "EXPECTED: syntax error"
+echo "RECEIVED: "
+echo "7+7" | ./calc 012345 3; echo; echo
+
+echo "11 + 5 -> base 0-5"
+echo "EXPECTED: 20"
+echo "RECEIVED: "
+echo "11+5" | ./calc 012345 4; echo; echo
+
+echo "bb + f -> base a-f" 
+echo "EXPECTED: ca"
+echo "RECEIVED: "
+echo "bb+f" | ./calc abcdef 4; echo; echo
+
+echo
+echo "==========="
+echo "SUBTRACTION"
+echo "==========="
+echo
+
+echo "5 - -5 -> base 0-9"
+echo "EXPECTED: 10"
+echo "RECEIVED: "
+echo "5--5" | ./calc 0123456789 4; echo; echo;
+
+echo "-5 - -5 -> base 0-9"
+echo "EXPECTED: 0"
+echo "RECEIVED: "
+echo "-5--5" | ./calc 0123456789 5; echo; echo;
+
+echo "F - D -> base ABCDEF"
+echo "EXPECTED: C"
+echo "RECEIVED: "
+echo "F-D" | ./calc ABCDEF 3; echo; echo;
+
+echo "10 - 6 -> base 0123456"
+echo "EXPECTED: 1"
+echo "RECEIVED: "
+echo "10-6" | ./calc 0123456 4; echo; echo;
+
+echo "BAAB - D -> base ABCDEFGHIJ"
+echo "EXPECTED: JJI"
+echo "RECEIVED: "
+echo "BAAB-D" | ./calc ABCDEFGHIJ 6; echo; echo;
+
+echo "========"
+echo "DIVISION"
+echo "========"
+echo
+
+echo "40 / 3 -> base 0-9"
+echo "EXPECTED: 13"
+echo "RECEIVED: "
+echo "40/3" | ./calc 0123456789 4; echo; echo;
+
+echo "434 / 35 -> base 0-9"
+echo "EXPECTED: 12"
+echo "RECEIVED: "
+echo "434/35" | ./calc 0123456789 6; echo; echo;
+
+echo "12345678 / 23456 -> base 0-9"
+echo "EXPECTED: 526"
+echo "RECEIVED: "
+echo "12345678/23456" | ./calc 0123456789 14; echo; echo;
+
+echo "321456987/98765 -> base 0-9"
+echo "EXPECTED: 3254"
+echo "RECEIVED: "
+echo "321456987/98765" | ./calc 0123456789 15; echo; echo;
+
+echo "321456987123654789/98 -> base 0-9"
+echo "EXPECTED: 3280173337996477"
+echo "RECEIVED: "
+echo "321456987123654789/98" | ./calc 0123456789 21; echo; echo;
+
+echo "=============="
+echo "MULTIPLICATION"
+echo "=============="
+echo
+
+echo "-3 * 3"
+echo "EXPECTED: -9"
+echo "RECEIVED: "
+echo "-3*3" | ./calc 0123456789 4; echo; echo;

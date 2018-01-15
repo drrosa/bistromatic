@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 23:40:23 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 23:48:09 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,11 @@ char	*do_op(char *num_a, char *num_b, char op)
 	a_neg = 0;
 	b_neg = 0;
 	if (op == '+')
-	{
-		ft_putstr("add: ");
-		ft_putstr(num_a);
-		ft_putchar('+');
-		ft_putendl(num_b);
-		printf("add: %s + %s\n", num_a, num_b);
 		return (add_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
-	}
 	else if (op == '-')
-	{
-		ft_putstr("subtract: ");
-		ft_putstr(num_a);
-		ft_putchar('-');
-		ft_putendl(num_b);
 		return (subtract_bignum(num_a, ft_strlen(num_a), num_b, ft_strlen(num_b)));
-	}
 	else if (op == '*')
 	{
-		ft_putstr("mult: ");
-		ft_putstr(num_a);
-		ft_putchar('*');
-		ft_putendl(num_b);
 		if (num_a[0] == '-')
 		{
 			num_a++;
@@ -67,13 +50,7 @@ char	*do_op(char *num_a, char *num_b, char op)
 		return (mult_bignum(num_a, num_b));
 	}
 	else if (op == '/' && num_b[0] != g_base[0])
-	{
-		ft_putstr("div: ");
-		ft_putstr(num_a);
-		ft_putchar('/');
-		ft_putendl(num_b);
 		return (div_bignum(num_a, num_b, 0));
-	}
 	else if (op == '%' && num_b[0] != g_base[0])
 		return (div_bignum(num_a, num_b, 1));
 	return (0);
