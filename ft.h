@@ -6,7 +6,7 @@
 /*   By: drosa-ta <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/20 23:04:27 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 17:27:15 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 19:33:03 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_H
 # define BUFF_SIZE 10
 # include "libft.h"
-int		ft_ptr_atoi(char **str);
 char	*add_sub(char **str);
 char	*mult_div_mod(char **str);
 char	*add_bignum(char *num1, int len1, char *num2, int len2);
