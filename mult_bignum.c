@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 15:14:58 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 13:03:01 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 23:50:02 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,3 @@ char	*mult_bignum(char *x, char *y)
 		return (karatsuba(a, b, c, d, n/2));
 	}
 }
-
-/*#include<stdio.h>
-int main(void)
-{
-	// printf("%s \n", add_zeros("53", 1));
-	printf("%s\n", mult_bignum("123456789", "123456789"));
-
-	return(0);
-}*/
