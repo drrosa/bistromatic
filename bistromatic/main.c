@@ -195,7 +195,6 @@ int	get_base_value(char c)
 
 int	main(int argc, char **argv)
 {
-	char	*result;
 	int		input_size;
 	//int		base_size;
 	t_array	buff;
@@ -213,11 +212,10 @@ int	main(int argc, char **argv)
 	}
 	buff.str[input_size] = '\0';
 	if (is_valid_expression(buff.str, input_size, argv[1]))
-		result = add_sub(&(buff.str));
+		ft_putstr(add_sub(&(buff.str)));
 	else
 		ft_putstr("syntax error");
 	// TODO: display in correct base
-	ft_putendl(result);
 	return (0);
 }
 
