@@ -6,7 +6,7 @@
 /*   By: scamargo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 14:57:54 by scamargo          #+#    #+#             */
-/*   Updated: 2018/01/14 14:59:50 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 16:21:08 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,9 @@ static void	add_factors(char *n1, char *n2, int lens[2], t_array *char_arr)
 	lens[1]--;	
 	while (lens[0] >= 0 || lens[1] >= 0 || carry > 0)
 	{
-		//fac1 = (lens[0] < 0) ? 0 : n1[lens[0]] - '0';
 		fac1 = (lens[0] < 0) ? 0 : get_base_value(n1[lens[0]]);
-		//fac2 = (lens[1] < 0) ? 0 : n2[lens[1]] - '0';
 		fac2 = (lens[1] < 0) ? 0 : get_base_value(n2[lens[1]]);
 		fac1 += fac2 + carry;
-		//printf("fac1 %% g_BASE_SIZE: %d\n", fac1 % g_BASE_SIZE); //TODO: REMOVE
 		arr_insert(char_arr, g_base[fac1 % g_BASE_SIZE]);
 		carry = fac1 / g_BASE_SIZE;
 		lens[0]--;

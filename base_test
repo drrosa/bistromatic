@@ -35,4 +35,17 @@ echo "EXPECTED: 0"
 echo "RECEIVED: "
 echo "-5--5" | ./calc 0123456789 5; echo; echo;
 
+echo "F - D -> base ABCDEF"
+echo "EXPECTED: C"
+echo "RECEIVED: "
+echo "F-D" | ./calc ABCDEF 3; echo; echo;
 
+echo "10 - 6 -> base 0123456"
+echo "EXPECTED: 1"
+echo "RECEIVED: "
+echo "10-6" | ./calc 0123456 4; echo; echo;
+
+echo "BAAB - D -> base ABCDEFGHIJ"
+echo "EXPECTED: JJI"
+echo "RECEIVED: "
+echo "BAAB-D" | ./calc ABCDEFGHIJ 6; echo; echo;

@@ -6,12 +6,13 @@
 /*   By: scamargo <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 12:33:18 by scamargo          #+#    #+#             */
-/*   Updated: 2018/01/14 15:07:03 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 16:42:24 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft.h"
+#include <stdio.h>
 
 static int	second_is_bigger(char **p_n2, int *p_len2, char **p_n1, int *p_len1)
 {
@@ -41,7 +42,7 @@ static int	second_is_bigger(char **p_n2, int *p_len2, char **p_n1, int *p_len1)
 	return (is_sec_bigger);
 }
 
-static void	trim_trailing_zeroes(char *num) //TODO: TRIM TRAILING BASE 0
+static void	trim_trailing_zeroes(char *num)
 {
 	int len;
 	int is_neg;
@@ -50,7 +51,7 @@ static void	trim_trailing_zeroes(char *num) //TODO: TRIM TRAILING BASE 0
 	is_neg = (num[len - 1] == '-') ? 1 : 0;
 	while (--len >= 0)
 	{
-		if (num[len] != '0' && num[len] != '-')
+		if (num[len] != g_base[0] && num[len] != '-')
 		{
 			if (is_neg)
 				num[++len] = '-';
@@ -62,19 +63,19 @@ static void	trim_trailing_zeroes(char *num) //TODO: TRIM TRAILING BASE 0
 	num[++len] = '\0';
 }
 
-static int	carry_the_one(char *num, int initial_index, int factor) // TODO: CARRY BASE 1
+static int	carry_the_one(char *num, int initial_index, int factor)
 {
 	int index;
 
 	index = initial_index;
 	while (index > 0)
 	{
-		if (num[index - 1] != '0')
+		if (num[index - 1] != g_base[0])
 		{
 			num[index - 1] -= 1;
 			while (index < initial_index)
-				num[index++] = '9';
-			return (factor + 10);
+				num[index++] = g_base[g_BASE_SIZE - 1];
+			return (factor + g_BASE_SIZE);
 		}
 		index--;
 	}
@@ -82,7 +83,7 @@ static int	carry_the_one(char *num, int initial_index, int factor) // TODO: CARR
 	return (0);
 }
 
-static void	subtract_factors(char *n1, char *n2, int lens[2], t_array *char_arr) //TODO: subtract base factors
+static void	subtract_factors(char *n1, char *n2, int lens[2], t_array *char_arr)
 {
 	int is_second_bigger;
 	int fac1;
@@ -93,12 +94,11 @@ static void	subtract_factors(char *n1, char *n2, int lens[2], t_array *char_arr)
 	lens[1]--;
 	while (lens[0] >= 0 || lens[1] >= 0)
 	{
-		fac1 = (lens[0] < 0) ? 0 : n1[lens[0]] - '0';
-		//fac1 = (lens[0] < 0) ? 0 : get_base_value(n1[lens[0]]);
-		fac2 = (lens[1] < 0) ? 0 : n2[lens[1]] - '0';
+		fac1 = (lens[0] < 0) ? 0 : get_base_value(n1[lens[0]]);
+		fac2 = (lens[1] < 0) ? 0 : get_base_value(n2[lens[1]]);
 		fac1 = (fac1 < fac2) ? carry_the_one(n1, lens[0], fac1) : fac1;
 		fac1 -= fac2;
-		arr_insert(char_arr, fac1 + '0');
+		arr_insert(char_arr, g_base[fac1]);
 		lens[0]--;
 		lens[1]--;
 	}
