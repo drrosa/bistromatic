@@ -12,7 +12,6 @@
 
 #include "libft.h"
 #include "ft.h"
-#include <stdio.h>
 
 static int	second_is_bigger(char **p_n2, int *p_len2, char **p_n1, int *p_len1)
 {

@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft.h"
-//TODO: remove stdio
-#include <stdio.h>
 #include "libft.h"
 
 char	*g_base;
@@ -148,7 +146,6 @@ char	*add_sub(char **str)
 		b = mult_div_mod(str);
 		if (!a)
 			a = "0";
-		// printf("a = %s, b = %s\n", a, b);
 		a = do_op(a, b, op);
 	}
 
@@ -192,7 +189,7 @@ int	get_base_value(char c)
 			return (i);
 		i++;
 	}
-	ft_putendl("Wtf?! Not a valid base symbol");
+//	ft_putendl("Wtf?! Not a valid base symbol");
 	return (-1);
 }
 
@@ -203,9 +200,6 @@ int	main(int argc, char **argv)
 	//int		base_size;
 	t_array	buff;
 
- 	// printf("IS_VALID: %hd\n", is_valid_expression("6*12", 4, "0123456789"));
- 	// printf("%s\n", add_sub(&(result)));
- 	//printf("IS_VALID: %hd\n", is_valid_expression("6*12", 4, "0123456789"));
 	if (argc != 3)
 		return (1);
 	g_BASE_SIZE = ft_strlen(argv[1]);
@@ -218,8 +212,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	buff.str[input_size] = '\0';
-	// printf("%s, %d, %s\n", buff.str, input_size, argv[1]);	
-	// printf("\nVALID?: %hd\n", is_valid_expression(buff.str, input_size, argv[1]));
 	if (is_valid_expression(buff.str, input_size, argv[1]))
 		result = add_sub(&(buff.str));
 	else

@@ -12,7 +12,6 @@
 
 #include "libft.h"
 #include "ft.h"
-#include <stdio.h>
 
 static void	add_factors(char *n1, char *n2, int lens[2], t_array *char_arr)
 {
