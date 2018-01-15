@@ -6,7 +6,7 @@
 /*   By: drosa-ta <drosa-ta@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:26:44 by drosa-ta          #+#    #+#             */
-/*   Updated: 2018/01/14 17:31:47 by scamargo         ###   ########.fr       */
+/*   Updated: 2018/01/14 19:27:17 by scamargo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ char	*parse_base_num(char **p_str) //account for multiple positive negatives, et
 	int		i;
 	int		n_count;
 	int		k;
-	
+	char	*ops;
+
+	ops = "(+-*/%)";
 	i = 0;
 	n_count = 0;
 	while (**p_str == '-' || **p_str == '+')
@@ -59,18 +61,19 @@ char	*parse_base_num(char **p_str) //account for multiple positive negatives, et
 	}
 	n_count = (n_count % 2 == 1) ? 1 : 0;
 	i = 0;
-	while ((*p_str)[i] && (*p_str)[i] != '-' && (*p_str)[i] != '+' && (*p_str)[i] != '*' && (*p_str)[i] != '/' && (*p_str)[i] != '%')
+	while ((*p_str)[i] && !ft_strchr(ops, (*p_str)[i]))
 		i++;
-	if (!(num = (char*)ft_memalloc(n_count + i + 1))) //TODO: fix i size
-		return (0); // TODO: protect this from caller side
+	if (!(num = (char*)ft_memalloc(n_count + i + 1)))
+		return (0);
 	i = 0;
 	k = 0;
 	if (n_count)
 		num[k++] = '-';
-	while ((*p_str)[i] && (*p_str)[i] != '-' && (*p_str)[i] != '+' && (*p_str)[i] != '*' && (*p_str)[i] != '/' && (*p_str)[i] != '%')
+	while ((*p_str)[i] && !ft_strchr(ops, (*p_str)[i]))
 		num[k++] = (*p_str)[i++];
 	num[k] = '\0';
 	*p_str = &(*p_str)[i];
+	printf("num: %s\n", num);
 	return (num);
 }
 
@@ -89,7 +92,6 @@ char	*parse_num(char **str)
 		return (a);
 	}
 	return (parse_base_num(str));
-	//return (ft_itoa(ft_ptr_atoi(str)));
 }
 
 char	*mult_div_mod(char **str)
@@ -134,7 +136,7 @@ char	*add_sub(char **str)
 		b = mult_div_mod(str);
 		if (!a)
 			a = "0";
-					// printf("a = %s, b = %s\n", a, b);
+		// printf("a = %s, b = %s\n", a, b);
 		a = do_op(a, b, op);
 	}
 
@@ -188,6 +190,7 @@ int	get_base_value(char c)
 {
 	int i;
 	i = 0;
+	//printf("get_b_val of %c\n", c);
 	while (g_base[i])
 	{
 		if (c ==  g_base[i])
@@ -227,7 +230,7 @@ int	main(int argc, char **argv)
 	else
 		ft_putstr("syntax error");
 	// TODO: display in correct base
-	ft_putstr(result);
+	ft_putendl(result);
 	return (0);
 }
 
